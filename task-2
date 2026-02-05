@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cognifyz JS Tasks</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    button { padding: 8px 16px; margin: 5px 0; cursor: pointer; }
+    .color-btn { background: #3498db; color: #fff; border: none; }
+    .calculator input { width: 80px; padding: 4px; margin-right: 4px; }
+    .calculator span { margin-left: 8px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <!-- #1 Button that changes color when clicked -->
+  <h2>1. Button Color Change</h2>
+  <button id="colorButton" class="color-btn">Click to Change Color</button>
+
+  <!-- #2 Alert box with time-based greeting -->
+  <h2>2. Time-Based Greeting</h2>
+  <button id="greetButton">Show Greeting</button>
+
+  <!-- #3 Basic calculator (addition) -->
+  <h2>3. Basic Calculator (Addition)</h2>
+  <div class="calculator">
+    <input type="number" id="num1" placeholder="First number" />
+    +
+    <input type="number" id="num2" placeholder="Second number" />
+    <button id="addButton">Add</button>
+    <span id="result"></span>
+  </div>
+
+  <script>
+    // #1 Button that changes its color when clicked
+    const colorButton = document.getElementById("colorButton");
+    let isBlue = true;
+    colorButton.addEventListener("click", function () {
+      if (isBlue) {
+        colorButton.style.backgroundColor = "#e74c3c"; // red
+      } else {
+        colorButton.style.backgroundColor = "#3498db"; // blue
+      }
+      isBlue = !isBlue;
+    });
+
+    // #2 Alert box that displays a greeting based on current time
+    const greetButton = document.getElementById("greetButton");
+    greetButton.addEventListener("click", function () {
+      const hour = new Date().getHours();
+      let greeting;
+      if (hour < 12) {
+        greeting = "Good morning!";
+      } else if (hour < 18) {
+        greeting = "Good afternoon!";
+      } else {
+        greeting = "Good evening!";
+      }
+      alert(greeting);
+    });
+
+    // #3 Basic calculator that adds two numbers and shows result
+    const addButton = document.getElementById("addButton");
+    const num1Input = document.getElementById("num1");
+    const num2Input = document.getElementById("num2");
+    const resultSpan = document.getElementById("result");
+
+    addButton.addEventListener("click", function () {
+      const a = parseFloat(num1Input.value) || 0;
+      const b = parseFloat(num2Input.value) || 0;
+      const sum = a + b;
+      resultSpan.textContent = "Result: " + sum;
+    });
+  </script>
+</body>
+</html>
