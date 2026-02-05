@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple HTML & CSS Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background-color: #f5f7fb;
+      color: #222;
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    /* Simple navigation menu */
+    .nav {
+      background-color: #1e293b;
+      border-radius: 8px;
+      padding: 10px 16px;
+      margin-bottom: 24px;
+    }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav a {
+      color: #e5e7eb;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 4px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .nav a:hover {
+      background-color: #fbbf24;
+      color: #111827;
+    }
+
+    /* Heading, paragraph, image section */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .hero-text h1 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      color: #111827;
+    }
+
+    .hero-text p {
+      font-size: 1rem;
+      color: #4b5563;
+    }
+
+    .hero-image {
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+    }
+
+    /* Simple form */
+    .form-section {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 20px 18px 22px;
+      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+      max-width: 460px;
+    }
+
+    .form-section h2 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    .form-section p {
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      color: #6b7280;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      font-size: 0.9rem;
+      color: #374151;
+    }
+
+    .form-group input[type="text"] {
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      font-size: 0.95rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-group input[type="text"]:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+
+    .btn-submit {
+      display: inline-block;
+      border: none;
+      background-color: #3b82f6;
+      color: #ffffff;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background-color 0.2s ease, transform 0.1s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      background-color: #2563eb;
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    /* JS demo section styles */
+    .js-section {
+      margin-top: 28px;
+      padding: 18px 16px 20px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+    }
+
+    .js-section h2 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    .js-section + .js-section {
+      margin-top: 18px;
+    }
+
+    .color-btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: none;
+      background-color: #10b981;
+      color: #ffffff;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .color-btn.clicked {
+      background-color: #ef4444;
+    }
+
+    .color-btn:active {
+      transform: translateY(1px);
+    }
+
+    .calculator {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .calculator input[type="number"] {
+      width: 90px;
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      font-size: 0.95rem;
+    }
+
+    .calc-btn {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: none;
+      background-color: #6366f1;
+      color: #ffffff;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.2s ease;
+    }
+
+    .calc-btn:hover {
+      background-color: #4f46e5;
+    }
+
+    .calc-result {
+      min-width: 90px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Navigation menu with three links -->
+    <nav class="nav">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Heading, paragraph, and image -->
+    <section id="home" class="hero">
+      <div class="hero-text">
+        <h1>Welcome to My Simple Webpage</h1>
+        <p>
+          This page demonstrates a basic layout created with HTML and CSS. It
+          includes a navigation menu, a heading with a supporting paragraph, an
+          image, and a simple form with an input field and submit button.
+        </p>
+      </div>
+      <div class="hero-image">
+        <img
+          src="https://via.placeholder.com/400x250.png?text=Sample+Image"
+          alt="Sample placeholder"
+        />
+      </div>
+    </section>
+
+
+    <!-- Simple form -->
+    <section id="contact" class="form-section">
+      <h2>Contact Form</h2>
+      <p>Enter your name below and click submit. (This is a static example.)</p>
+      <form action="#" method="post">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+        <button type="submit" class="btn-submit">Submit</button>
+      </form>
+    </section>
+
+    <!-- JavaScript demos -->
+    <section class="js-section">
+      <h2>Color Changing Button</h2>
+      <p>Click the button to toggle its color.</p>
+      <button id="colorToggleBtn" class="color-btn">Click me</button>
+    </section>
+
+    <section class="js-section">
+      <h2>Time-based Greeting</h2>
+      <p>Click the button to see a greeting based on the current time.</p>
+      <button id="greetBtn" class="calc-btn">Show Greeting</button>
+    </section>
+
+    <section class="js-section">
+      <h2>Simple Calculator (Add Two Numbers)</h2>
+      <div class="calculator">
+        <input type="number" id="num1" placeholder="First" />
+        <span>+</span>
+        <input type="number" id="num2" placeholder="Second" />
+        <button id="addBtn" class="calc-btn">Add</button>
+        <span>=</span>
+        <span id="result" class="calc-result">0</span>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Button that changes color when clicked
+    const colorToggleBtn = document.getElementById("colorToggleBtn");
+    if (colorToggleBtn) {
+      colorToggleBtn.addEventListener("click", () => {
+        colorToggleBtn.classList.toggle("clicked");
+      });
+    }
+
+    // Alert box with time-based greeting
+    const greetBtn = document.getElementById("greetBtn");
+    if (greetBtn) {
+      greetBtn.addEventListener("click", () => {
+        const hour = new Date().getHours();
+        let greeting;
+        if (hour < 12) {
+          greeting = "Good morning!";
+        } else if (hour < 18) {
+          greeting = "Good afternoon!";
+        } else {
+          greeting = "Good evening!";
+        }
+        alert(greeting + " The current hour is " + hour + ":00.");
+      });
+    }
+
+    // Basic calculator: add two numbers and display the result
+    const num1Input = document.getElementById("num1");
+    const num2Input = document.getElementById("num2");
+    const addBtn = document.getElementById("addBtn");
+    const resultSpan = document.getElementById("result");
+
+    if (addBtn && num1Input && num2Input && resultSpan) {
+      addBtn.addEventListener("click", () => {
+        const a = parseFloat(num1Input.value) || 0;
+        const b = parseFloat(num2Input.value) || 0;
+        const sum = a + b;
+        resultSpan.textContent = sum;
+      });
+    }
+  </script>
+</body>
+</html>
